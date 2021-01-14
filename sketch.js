@@ -7,7 +7,7 @@ var engine, world;
 var box1, pig1,pig3;
 var backgroundImg,platform;
 var bird, slingshot;
-
+var gameState="onSling"
 
 function preload() {
     backgroundImg = loadImage("sprites/bg.png");
@@ -41,6 +41,41 @@ function setup(){
 
     //log6 = new Log(230,180,80, PI/2);
     slingshot = new SlingShot(bird.body,{x:200, y:50});
+    
+    //string
+    var string= "Happy new year";
+    console.log(string);
+
+    //number
+    var number= 78;
+    console.log(number);
+
+    //boolean
+    var bool= true;
+    console.log(bool);
+
+    //object
+    var object;
+    console.log(object);  
+  
+    //object
+    var object=null;
+    console.log(object);  
+
+    //array
+    var arr1=[1,2,3,"hai",bool];
+    console.log(arr1);  
+    console.log(arr1[2]);
+    arr1.push("yuyjguf");
+    console.log(arr1); 
+    arr1.push("pooph");
+    console.log(arr1);  
+    arr1.pop();
+    console.log(arr1); 
+  
+    var arr2=[[1,2,3],[4,5,6],"hai",bool];
+    console.log(arr2[1][0]);
+    
 }
 
 function draw(){
@@ -69,12 +104,15 @@ function draw(){
 }
 
 function mouseDragged(){
+    if(gameState!=="launched"){
     Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+    }
 }
 
 
 function mouseReleased(){
     slingshot.fly();
+    gameState="launched"
 }
 
 function keyPressed(){
